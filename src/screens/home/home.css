@@ -1,15 +1,27 @@
-.search-box{
-    position:relative;
+.search-box {
+  position: relative;
 }
 .search-box svg {
-    position:absolute;
-    top:8px;
-    left: 8px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
 }
 
-.search-box input{
-        background-color: #c0c0c0;
-    border-radius: 4px;
-    width: 300px;
-    padding: 10px 30px;
+.search-box input {
+  background-color: #c0c0c0;
+  border-radius: 4px;
+  width: 300px;
+  padding: 10px 30px;
+  margin-right: 20px;
+}
+
+.header-right-home {
+  display: flex;
+  align-items: center;
+}
+
+.header-right-home img {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 40px;
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../common/Header";
 import SearchIcon from "@material-ui/icons/Search";
 import "./home.css";
-import { Input } from "@material-ui/core";
+import { Input, IconButton } from "@material-ui/core";
 
 const HomeScreen = () => {
   const [data, setData] = useState([]);
@@ -34,11 +34,17 @@ const HomeScreen = () => {
     <>
       <Header
         right={
-          <div>
+          <div className="header-right-home">
             <div className="search-box">
               <Input type="text" placeholder="Search..." />
               <SearchIcon />
             </div>
+            <IconButton>
+              <img
+                src="https://avatars.githubusercontent.com/u/20256683?s=60&v=4"
+                alt="Saransh Gupta"
+              ></img>
+            </IconButton>
           </div>
         }
       ></Header>
