@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { withRouter } from "react-router-dom";
 import {
   Card,
   FormControl,
@@ -11,11 +11,12 @@ import {
 import Header from "../../common/Header";
 import "./login.css";
 
-const LoginScreen = () => {
+const LoginScreen = ({ history }) => {
   const [usernameFilled, setUsernameFilled] = useState(true);
   const [passwordFilled, setPasswordFilled] = useState(true);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [incorrectCredentials, setIncorrectCredentials] = useState(false);
   return (
     <>
       <Header></Header>
@@ -26,6 +27,13 @@ const LoginScreen = () => {
               e.preventDefault();
               setPasswordFilled(!!password);
               setUsernameFilled(!!username);
+              if (username && password) {
+                if (username === "admin" && password === "admin") {
+                  history.push("/home");
+                } else {
+                  setIncorrectCredentials(true);
+                }
+              }
             }}
           >
             <h1>Login</h1>
@@ -38,11 +46,14 @@ const LoginScreen = () => {
                 value={username}
                 onChange={e => {
                   setUsername(e.target.value);
+                  setIncorrectCredentials(false);
                 }}
                 aria-describedby="my-helper-text"
               />
               {!usernameFilled && (
-                <FormHelperText id="my-helper-text">required</FormHelperText>
+                <FormHelperText error={true} id="my-helper-text">
+                  required
+                </FormHelperText>
               )}
             </FormControl>
             <FormControl className="form-control">
@@ -52,6 +63,7 @@ const LoginScreen = () => {
               <Input
                 onChange={e => {
                   setPassword(e.target.value);
+                  setIncorrectCredentials(false);
                 }}
                 id="password"
                 value={password}
@@ -59,9 +71,14 @@ const LoginScreen = () => {
                 type="password"
               />
               {!passwordFilled && (
-                <FormHelperText id="my-helper-text">required</FormHelperText>
+                <FormHelperText error={true} id="my-helper-text">
+                  required
+                </FormHelperText>
               )}
             </FormControl>
+            {incorrectCredentials && (
+              <p className="help-text">Incorrect username and/or password</p>
+            )}
             <Button type="submit" variant="contained" color="primary">
               Login
             </Button>
@@ -72,4 +89,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default withRouter(LoginScreen);
