@@ -36,7 +36,7 @@ const HomeScreen = () => {
         right={
           <div className="header-right-home">
             <div className="search-box">
-              <Input type="text" placeholder="Search..." />
+              <Input disableUnderline type="text" placeholder="Search..." />
               <SearchIcon />
             </div>
             <IconButton>
