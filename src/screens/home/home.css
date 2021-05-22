@@ -25,3 +25,32 @@
   overflow: hidden;
   height: 40px;
 }
+
+.menu-button {
+  position: relative;
+}
+
+.menu-button ul {
+  position: absolute;
+  right: 10px;
+  top: 100%;
+  padding: 10px;
+  background: #dfdfdf;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: black;
+  width: 120px;
+  text-align: left;
+  line-height: 2.2em;
+  cursor: default;
+}
+
+.menu-button ul li {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.menu-button ul li:first-child {
+  border-bottom: 1px solid;
+}

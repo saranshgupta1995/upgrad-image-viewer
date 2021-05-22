@@ -5,6 +5,7 @@ import "./index.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginScreen from "./screens/login/login";
 import HomeScreen from "./screens/home/home";
+import ProfileScreen from "./screens/profile/profile";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         <Switch>
           <Route path="/home">
             <HomeScreen></HomeScreen>
+          </Route>
+          <Route path="/profile">
+            <ProfileScreen></ProfileScreen>
           </Route>
           <Route path="/">
             <LoginScreen></LoginScreen>

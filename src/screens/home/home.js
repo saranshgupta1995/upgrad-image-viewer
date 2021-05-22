@@ -6,6 +6,7 @@ import { Input, IconButton } from "@material-ui/core";
 
 const HomeScreen = () => {
   const [data, setData] = useState([]);
+  const [showMenu, setShowMenu] = useState(false);
   useEffect(() => {
     fetch(
       "https://graph.instagram.com/me/media?fields=id,caption&access_token=8661035776.d0fcd39.39f63ab2f88d4f9c92b0862729ee2784"
@@ -39,11 +40,20 @@ const HomeScreen = () => {
               <Input disableUnderline type="text" placeholder="Search..." />
               <SearchIcon />
             </div>
-            <IconButton>
+            <IconButton className="menu-button">
               <img
+                onClick={() => {
+                  setShowMenu(!showMenu);
+                }}
                 src="https://avatars.githubusercontent.com/u/20256683?s=60&v=4"
                 alt="Saransh Gupta"
               ></img>
+              {showMenu && (
+                <ul>
+                  <li>My Account</li>
+                  <li>Logout</li>
+                </ul>
+              )}
             </IconButton>
           </div>
         }
