@@ -40,11 +40,13 @@ const HomeScreen = () => {
               <Input disableUnderline type="text" placeholder="Search..." />
               <SearchIcon />
             </div>
-            <IconButton className="menu-button">
+            <IconButton
+              className="menu-button"
+              onClick={() => {
+                setShowMenu(!showMenu);
+              }}
+            >
               <img
-                onClick={() => {
-                  setShowMenu(!showMenu);
-                }}
                 src="https://avatars.githubusercontent.com/u/20256683?s=60&v=4"
                 alt="Saransh Gupta"
               ></img>
