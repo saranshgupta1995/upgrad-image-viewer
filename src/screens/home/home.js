@@ -48,7 +48,6 @@ const HomeScreen = () => {
   useEffect(() => {
     get.ids().then(response => {
       const postSummary = response.data;
-      postSummary.length = 2;
       postSummary.forEach(d => {
         fetchPostData(d.id, {
           caption: d.caption,
