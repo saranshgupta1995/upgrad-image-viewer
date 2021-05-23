@@ -45,4 +45,3 @@ export const get = {
   }
 };
 
-const MOCK_DATA = {};

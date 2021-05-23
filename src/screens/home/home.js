@@ -18,6 +18,7 @@ import FavouriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import "./home.css";
 import { get } from "../../api";
+import { format } from "../../utils";
 
 const HomeScreen = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -112,7 +113,7 @@ const HomeScreen = () => {
               <CardHeader
                 avatar={<img src={post.userImage} className="avatar" alt="" />}
                 title={<p className="user-name">{post.username}</p>}
-                subheader={post.timestamp}
+                subheader={format(new Date(post.timestamp), "DD/MM/YYYY HH:mm:SS")}
               ></CardHeader>
               <CardContent>
                 <img src={post.media_url} alt="" />
