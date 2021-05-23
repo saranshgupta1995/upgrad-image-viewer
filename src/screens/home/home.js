@@ -5,8 +5,12 @@ import {
   Input,
   CardHeader,
   CardContent,
-  Typography
+  Typography,
+  FormControl,
+  InputLabel,
+  Button
 } from "@material-ui/core";
+
 import React, { useEffect, useState } from "react";
 import Header from "../../common/Header";
 import SearchIcon from "@material-ui/icons/Search";
@@ -150,6 +154,16 @@ const HomeScreen = () => {
                       {" "}
                       <span>{post.likes + (post.liked ? 1 : 0)}</span> likes
                     </span>
+                    <br />
+                  </div>
+                  <div className="comment-box">
+                    <FormControl className="form-control">
+                      <InputLabel htmlFor="username">Add a comment</InputLabel>
+                      <Input id="username" aria-describedby="my-helper-text" />
+                    </FormControl>
+                    <Button type="submit" variant="contained" color="primary">
+                      ADD
+                    </Button>
                   </div>
                 </CardContent>
               </CardContent>
