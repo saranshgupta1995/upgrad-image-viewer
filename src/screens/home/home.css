@@ -52,6 +52,10 @@
   cursor: pointer;
 }
 
+.menu-button ul li,.menu-button ul li a {
+  color: black;
+}
+
 .menu-button ul li:first-child {
   border-bottom: 1px solid;
 }

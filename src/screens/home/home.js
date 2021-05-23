@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Card,
   IconButton,
@@ -98,7 +99,10 @@ const HomeScreen = () => {
               ></img>
               {showMenu && (
                 <ul>
-                  <li>My Account</li>
+                  <li>
+                    {" "}
+                    <Link to="/profile">My Account</Link>
+                  </li>
                   <li>Logout</li>
                 </ul>
               )}

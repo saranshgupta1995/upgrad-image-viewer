@@ -1,25 +1,38 @@
-.home-main {
+.profile-main {
   display: flex;
+  justify-content: center;
+  padding: 30px 100px;
+}
+
+.information-section {
+  display: flex;
+}
+
+.information-section img {
+  margin-right: 80px;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.information-section .text-info {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-.login-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 40px 60px;
-  margin: 0 20px;
-}
-.login-card p {
-  color: #f44336;
-}
-
-.login-card h1,
-.login-card button {
-  text-transform: uppercase;
-  margin: 20px 0;
-}
-
-.login-card .form-control {
-  width: 100%;
+.information-section .text-info > * {
   margin-bottom: 20px;
+}
+
+.information-section .text-info > h2 {
+  font-size: 2em;
+}
+
+.information-section .text-info > p {
+  font-weight: 600;
+}
+
+.information-section .text-info > div > span {
+  margin-right: 100px;
 }
