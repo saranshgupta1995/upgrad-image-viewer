@@ -54,3 +54,13 @@
 .menu-button ul li:first-child {
   border-bottom: 1px solid;
 }
+
+.post-container {
+  display: flex;
+  padding: 10px 40px;
+}
+
+.post-container .card {
+  flex: 0 0 50%;
+  margin-right: 10px;
+}
