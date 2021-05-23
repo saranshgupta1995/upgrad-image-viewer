@@ -80,6 +80,26 @@
   height: auto;
 }
 
+.post-container .card p,.post-container .card span {
+  font-weight: 600;
+}
+
 .post-container .card .avatar {
   border-radius: 50%;
+}
+
+.post-container .card .hashtags {
+  color: #6aa9e8;
+}
+
+.post-container .card .likes {
+  display: flex;
+  align-items: center;
+}
+.post-container .card .likes .liked {
+  color: red;
+}
+
+.post-container .card .likes svg {
+  margin-right: 10px;
 }

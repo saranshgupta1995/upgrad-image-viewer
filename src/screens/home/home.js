@@ -10,6 +10,8 @@ import {
 import React, { useEffect, useState } from "react";
 import Header from "../../common/Header";
 import SearchIcon from "@material-ui/icons/Search";
+import FavouriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import "./home.css";
 import { get } from "../../api";
 
@@ -23,6 +25,17 @@ const HomeScreen = () => {
     setInstagramPosts(instagramPosts => [...instagramPosts, post]);
   };
 
+  const likePost = (id, status) => {
+    setInstagramPosts(instagramPosts =>
+      instagramPosts.map(post => {
+        if (post.id === id) {
+          post.liked = status;
+        }
+        return post;
+      })
+    );
+  };
+
   const fetchPostData = (id, extra) => {
     get.mediaInfo(id).then(post => addPost({ ...post, ...extra }));
   };
@@ -30,8 +43,14 @@ const HomeScreen = () => {
   useEffect(() => {
     get.ids().then(response => {
       const postSummary = response.data;
+      postSummary.length = 2;
       postSummary.forEach(d => {
-        fetchPostData(d.id, { caption: d.caption });
+        fetchPostData(d.id, {
+          caption: d.caption,
+          hashtags: ["Upgrad", "Learning"],
+          likes: 7,
+          liked: false
+        });
       });
     });
   }, []);
@@ -99,9 +118,39 @@ const HomeScreen = () => {
                     variant="body2"
                     color="textSecondary"
                     component="p"
+                    className="caption"
                   >
                     {post.caption}
                   </Typography>
+                  {!!post.hashtags.length && (
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      className="hashtags"
+                    >
+                      {post.hashtags.map(tag => (
+                        <span key={tag}>#{tag}</span>
+                      ))}
+                    </Typography>
+                  )}
+                  <br />
+                  <div className="likes">
+                    {post.liked ? (
+                      <FavoriteIcon
+                        onClick={() => likePost(post.id, !post.liked)}
+                        className={"liked"}
+                      ></FavoriteIcon>
+                    ) : (
+                      <FavouriteBorderIcon
+                        onClick={() => likePost(post.id, !post.liked)}
+                      ></FavouriteBorderIcon>
+                    )}
+                    <span>
+                      {" "}
+                      <span>{post.likes + (post.liked ? 1 : 0)}</span> likes
+                    </span>
+                  </div>
                 </CardContent>
               </CardContent>
             </Card>
