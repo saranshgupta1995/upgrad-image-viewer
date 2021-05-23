@@ -48,7 +48,6 @@ const HomeScreen = () => {
   useEffect(() => {
     get.ids().then(response => {
       const postSummary = response.data;
-      postSummary.length = 2;
       postSummary.forEach(d => {
         fetchPostData(d.id, {
           caption: d.caption,
@@ -108,7 +107,7 @@ const HomeScreen = () => {
       ></Header>
       <main className="post-container">
         {filteredinstagramPosts.map(post => (
-          <div>
+          <div key={post.id}>
             <Card key={post.id} className="card">
               <CardHeader
                 avatar={<img src={post.userImage} className="avatar" alt="" />}
