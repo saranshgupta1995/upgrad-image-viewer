@@ -57,8 +57,12 @@
   color: black;
 }
 
-.menu-button ul li:first-child {
+.menu-button ul li {
   border-bottom: 1px solid;
+}
+
+.menu-button ul li:last-child {
+  border-bottom: none;
 }
 
 .post-container {

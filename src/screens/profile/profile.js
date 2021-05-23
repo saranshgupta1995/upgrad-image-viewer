@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Header from "../../common/Header";
@@ -12,9 +13,10 @@ const ProfileScreen = withRouter(({ history }) => {
   const [userUsersFollowed, setUserUsersFollowed] = useState(null);
   const [userUsersFollowedBy, setUserUsersFollowedBy] = useState(null);
   const [userUsersFullName, setUserUsersFullName] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+
   useEffect(() => {
     get.ids().then(data => {
-      console.log(data);
       setUserData(data);
       setUserPicture(data.userImage);
       setUserPostCount(data.countPosts);
@@ -28,11 +30,21 @@ const ProfileScreen = withRouter(({ history }) => {
       <Header
         right={
           <div className="header-right-home">
-            <IconButton>
+            <IconButton
+              className="menu-button"
+              onClick={() => {
+                setShowMenu(!showMenu);
+              }}
+            >
               <img
                 src="https://avatars.githubusercontent.com/u/20256683?s=60&v=4"
                 alt="Saransh Gupta"
               ></img>
+              {showMenu && (
+                <ul>
+                  <li>Logout</li>
+                </ul>
+              )}
             </IconButton>
           </div>
         }
