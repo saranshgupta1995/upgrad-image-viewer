@@ -107,7 +107,7 @@ const HomeScreen = () => {
       ></Header>
       <main className="post-container">
         {filteredinstagramPosts.map(post => (
-          <div>
+          <div key={post.id}>
             <Card key={post.id} className="card">
               <CardHeader
                 avatar={<img src={post.userImage} className="avatar" alt="" />}
