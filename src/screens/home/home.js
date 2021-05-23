@@ -15,6 +15,8 @@ import "./home.css";
 const HomeScreen = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [instagramPosts, setInstagramPosts] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredinstagramPosts, setFilteredInstagramPosts] = useState([]);
 
   const addPost = post => {
     setInstagramPosts(instagramPosts => [...instagramPosts, post]);
@@ -29,7 +31,8 @@ const HomeScreen = () => {
         media_type: "IMAGE",
         media_url: "https://fb-s-b-a.akamaihd.net/...",
         username: "jayposiris",
-        timestamp: "2017-08-31T18:10:00+0000"
+        timestamp: "2017-08-31T18:10:00+0000",
+        caption: "lorem" + Math.random()
       });
     });
   };
@@ -60,13 +63,27 @@ const HomeScreen = () => {
       });
     });
   }, []);
+
+  useEffect(() => {
+    setFilteredInstagramPosts(
+      instagramPosts.filter(post => post.caption.includes(searchValue))
+    );
+  }, [searchValue, instagramPosts]);
   return (
     <>
       <Header
         right={
           <div className="header-right-home">
             <div className="search-box">
-              <Input disableUnderline type="text" placeholder="Search..." />
+              <Input
+                disableUnderline
+                type="text"
+                value={searchValue}
+                onChange={e => {
+                  setSearchValue(e.nativeEvent.target.value);
+                }}
+                placeholder="Search..."
+              />
               <SearchIcon />
             </div>
             <IconButton
@@ -90,7 +107,7 @@ const HomeScreen = () => {
         }
       ></Header>
       <main className="post-container">
-        {instagramPosts.map(post => (
+        {filteredinstagramPosts.map(post => (
           <Card key={post.id} className="card">
             <CardHeader
               avatar={<img src={post.media_url} alt="" />}
@@ -101,10 +118,7 @@ const HomeScreen = () => {
               <CardMedia image={post.media_url} title="Paella dish" />
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                  labore rem earum reprehenderit accusantium sequi debitis
-                  aperiam maiores veniam. Magnam inventore eos quasi sit
-                  voluptatum, accusantium nisi doloremque voluptas eaque.
+                  {post.caption}
                 </Typography>
               </CardContent>
             </CardContent>
