@@ -52,7 +52,8 @@
   cursor: pointer;
 }
 
-.menu-button ul li,.menu-button ul li a {
+.menu-button ul li,
+.menu-button ul li a {
   color: black;
 }
 
@@ -63,9 +64,55 @@
 .post-container {
   display: flex;
   padding: 10px 40px;
+  flex-wrap: wrap;
+}
+
+.post-container > div {
+  flex: 0 0 50%;
 }
 
 .post-container .card {
-  flex: 0 0 50%;
+  margin-right: 10px;
+}
+
+.post-container .card img {
+  width: 100%;
+  height: auto;
+}
+
+.post-container .card p,
+.post-container .card span {
+  font-weight: 600;
+}
+
+.post-container .card .avatar {
+  border-radius: 50%;
+}
+
+.post-container .card .hashtags {
+  color: #6aa9e8;
+}
+
+.post-container .card .form-control {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.post-container .card .comment-box {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.post-container .card .likes {
+  display: flex;
+  align-items: center;
+}
+
+.post-container .card .likes .liked {
+  color: red;
+}
+
+.post-container .card .likes svg {
   margin-right: 10px;
 }

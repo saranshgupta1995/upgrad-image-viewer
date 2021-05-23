@@ -34,11 +34,14 @@ export const get = {
       return new Promise(res => res(GET_CACHE[cachePostId]));
     }
     return fetch(getMediaInfoUrl(id)).then(resStream => {
-      const data = resStream.json();
-      GET_CACHE[cachePostId] = data;
-      return GET_CACHE[cachePostId];
+      return resStream.json().then(data => {
+        data.userImage =
+          "https://avatars.githubusercontent.com/u/20256683?s=60&v=4";
+
+        GET_CACHE[cachePostId] = data;
+        return GET_CACHE[cachePostId];
+      });
     });
   }
 };
 
-const MOCK_DATA = {};
